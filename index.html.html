@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Founder Hub — Aalto Founder School</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f5f5f5;min-height:100vh}
+.app{max-width:960px;margin:20px auto;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #c8e6c9;box-shadow:0 2px 12px rgba(29,158,117,0.08)}
+.topbar{background:#1D9E75;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:52px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-mark{width:28px;height:28px;background:#FFD700;border-radius:6px;display:flex;align-items:center;justify-content:center}
+.logo-mark i{color:#1D9E75;font-size:15px}
+.logo-text{font-size:15px;font-weight:600;color:#fff}
+.logo-sub{font-size:11px;color:rgba(255,255,255,0.75);margin-left:3px}
+.av{width:30px;height:30px;border-radius:50%;background:#FFD700;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#1D9E75}
+.nav{background:#fff;border-bottom:2px solid #1D9E75;padding:0 16px;display:flex;gap:2px}
+.nb{padding:10px 16px;font-size:13px;border:none;background:none;cursor:pointer;color:#999;border-bottom:3px solid transparent;margin-bottom:-2px;display:flex;align-items:center;gap:6px;border-radius:6px 6px 0 0;font-weight:500;transition:all 0.15s}
+.nb.active{background:#1D9E75;color:#fff;border-bottom-color:#1D9E75}
+.nb:not(.active):hover{color:#1D9E75}
+.pane{display:none;padding:20px;background:#fff}
+.pane.active{display:block}
+.grid{display:grid;grid-template-columns:1fr 290px;gap:16px}
+.card{background:#fff;border:1px solid #e8f5e9;border-radius:10px;padding:16px;margin-bottom:12px}
+.ph{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.pav{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
+.pn{font-size:13px;font-weight:600;color:#1a1a1a}
+.pt{font-size:11px;color:#888;margin-top:1px}
+.badge{font-size:10px;padding:2px 8px;border-radius:20px;margin-left:6px;font-weight:500}
+.pbody{font-size:13px;color:#555;line-height:1.65;margin-bottom:12px}
+.pimg{background:#f0faf6;border-radius:8px;height:130px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;border:1px solid #c8e6c9;color:#888;flex-direction:column;gap:6px}
+.pact{display:flex;gap:16px;padding-top:10px;border-top:1px solid #e8f5e9}
+.pa{display:flex;align-items:center;gap:5px;font-size:12px;color:#888;cursor:pointer;background:none;border:none;padding:0;font-family:inherit}
+.pa:hover{color:#1D9E75}
+.sc{background:#fff;border:1px solid #e8f5e9;border-radius:10px;padding:16px;margin-bottom:12px}
+.st{font-size:13px;font-weight:600;color:#1a1a1a;margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.ev{display:flex;gap:9px;margin-bottom:9px;align-items:flex-start}
+.ed{background:#FFD700;color:#333;border-radius:6px;padding:4px 7px;text-align:center;font-size:10px;font-weight:600;min-width:34px;flex-shrink:0;line-height:1.4}
+.en{font-size:12px;color:#1a1a1a;font-weight:600}
+.em{font-size:11px;color:#888;margin-top:2px}
+.cc{background:#fff;border:1px solid #e8f5e9;border-radius:10px;padding:14px;margin-bottom:16px}
+.crow{display:flex;align-items:center;gap:10px}
+.ci{flex:1;border:1px solid #c8e6c9;border-radius:8px;padding:8px 12px;font-size:13px;color:#1a1a1a;background:#f9fffe;font-family:inherit;outline:none}
+.ci:focus{border-color:#1D9E75}
+.cact{display:flex;gap:7px;margin-top:10px;align-items:center}
+.cbtn{display:flex;align-items:center;gap:5px;font-size:12px;padding:5px 10px;border:1px solid #c8e6c9;border-radius:7px;background:none;color:#555;cursor:pointer;font-family:inherit}
+.cbtn:hover{border-color:#1D9E75;color:#1D9E75}
+.pbtn{background:#1D9E75;color:#fff;border:none;border-radius:7px;padding:5px 14px;font-size:12px;font-weight:600;cursor:pointer;margin-left:auto}
+.aw{max-width:540px;margin:0 auto}
+.ah{text-align:center;padding:20px 0 16px}
+.aico{width:52px;height:52px;background:#1D9E75;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.aico i{font-size:26px;color:#fff}
+.atit{font-size:16px;font-weight:600;color:#1a1a1a}
+.asub{font-size:13px;color:#888;margin-top:4px}
+.chat{background:#f9fffe;border:1px solid #c8e6c9;border-radius:10px;padding:16px;min-height:270px;margin-bottom:12px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:320px}
+.msg{max-width:85%}
+.msg.bot{align-self:flex-start}
+.msg.usr{align-self:flex-end}
+.bub{padding:10px 14px;border-radius:10px;font-size:13px;line-height:1.65;white-space:pre-wrap}
+.msg.bot .bub{background:#fff;color:#1a1a1a;border:1px solid #c8e6c9;border-bottom-left-radius:3px}
+.msg.usr .bub{background:#1D9E75;color:#fff;border-bottom-right-radius:3px}
+.ml{font-size:11px;color:#888;margin-bottom:3px;font-weight:500}
+.msg.usr .ml{text-align:right}
+.suggs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.sg{font-size:12px;padding:6px 12px;border:1.5px solid #1D9E75;border-radius:20px;background:#fff;color:#1D9E75;cursor:pointer;font-weight:500;font-family:inherit}
+.sg:hover{background:#e8f5e9}
+.cir{display:flex;gap:8px}
+.cin{flex:1;border:1px solid #c8e6c9;border-radius:8px;padding:10px 14px;font-size:13px;background:#fff;color:#1a1a1a;font-family:inherit;outline:none}
+.cin:focus{border-color:#1D9E75}
+.csnd{background:#1D9E75;color:#fff;border:none;border-radius:8px;padding:0 16px;cursor:pointer;font-size:14px}
+.typing{display:none;align-items:center;gap:5px;font-size:12px;color:#888;padding:4px 0;margin-bottom:8px}
+.typing.show{display:flex}
+.dot{width:5px;height:5px;background:#1D9E75;border-radius:50%;animation:bop 1s infinite}
+.dot:nth-child(2){animation-delay:.15s}
+.dot:nth-child(3){animation-delay:.3s}
+@keyframes bop{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
+.sbox{background:#f0faf6;border:1px solid #c8e6c9;border-radius:8px;padding:10px;text-align:center}
+.sn{font-size:20px;font-weight:600;color:#1D9E75}
+.sl{font-size:11px;color:#666;margin-top:2px}
+.tag{font-size:11px;padding:2px 8px;border-radius:20px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="logo">
+      <div class="logo-mark"><i class="ti ti-rocket"></i></div>
+      <div><span class="logo-text">Founder Hub</span><span class="logo-sub"> · Aalto Founder School</span></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <i class="ti ti-bell" style="font-size:18px;color:rgba(255,255,255,0.85)"></i>
+      <div class="av">FS</div>
+    </div>
+  </div>
+
+  <div class="nav">
+    <button class="nb active" onclick="sw('feed',this)"><i class="ti ti-layout-grid"></i> Community</button>
+    <button class="nb" onclick="sw('compass',this)"><i class="ti ti-robot"></i> Founder Compass</button>
+    <button class="nb" onclick="sw('events',this)"><i class="ti ti-calendar"></i> Events</button>
+  </div>
+
+  <div id="feed" class="pane active">
+    <div class="grid">
+      <div>
+        <div class="cc">
+          <div class="crow">
+            <div class="av" style="width:36px;height:36px;flex-shrink:0">FS</div>
+            <input class="ci" placeholder="Share your founder journey...">
+          </div>
+          <div class="cact">
+            <button class="cbtn"><i class="ti ti-video"></i> Video</button>
+            <button class="cbtn"><i class="ti ti-photo"></i> Photo</button>
+            <button class="cbtn"><i class="ti ti-file-text"></i> Update</button>
+            <button class="pbtn">Post</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ph">
+            <div class="pav" style="background:#e8f5e9;color:#0F6E56">JL</div>
+            <div><div class="pn">Joonas L. <span class="badge" style="background:#e8f5e9;color:#0F6E56">Founder Sprint</span></div><div class="pt">2 hours ago · Team Novu</div></div>
+          </div>
+          <div class="pbody">Just finished our first customer discovery interviews — 12 conversations in 3 days. The insight that surprised us most: our target users don't actually have the problem we thought they had. Back to the drawing board but honestly excited. This is what it's about.</div>
+          <div class="pimg"><i class="ti ti-chart-bar" style="font-size:28px;color:#1D9E75"></i><span style="font-size:12px">Customer discovery findings</span></div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+            <span class="tag" style="background:#e8f5e9;color:#0F6E56">customer discovery</span>
+            <span class="tag" style="background:#e3f2fd;color:#185FA5">pivot</span>
+          </div>
+          <div class="pact">
+            <button class="pa"><i class="ti ti-heart"></i> 24</button>
+            <button class="pa"><i class="ti ti-message"></i> 8 comments</button>
+            <button class="pa"><i class="ti ti-share"></i> Share</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ph">
+            <div class="pav" style="background:#e3f2fd;color:#185FA5">EM</div>
+            <div><div class="pn">Emma M. <span class="badge" style="background:#e3f2fd;color:#185FA5">Founder Minor</span></div><div class="pt">Yesterday · Individual</div></div>
+          </div>
+          <div class="pbody">Attended my first Founder Talk last night. Three things I am taking away: hire for energy not just skills, say the hard things early, and never underestimate the cost of a wrong hire. Notes linked in comments.</div>
+          <div class="pact">
+            <button class="pa"><i class="ti ti-heart"></i> 41</button>
+            <button class="pa"><i class="ti ti-message"></i> 12 comments</button>
+            <button class="pa"><i class="ti ti-share"></i> Share</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ph">
+            <div class="pav" style="background:#fff9e6;color:#856A00">TH</div>
+            <div><div class="pn">Team HealthBridge <span class="badge" style="background:#fff9e6;color:#856A00">Founder Sprint</span></div><div class="pt">2 days ago</div></div>
+          </div>
+          <div class="pbody">Milestone unlocked — we just signed our first LOI with a pilot hospital in Tampere. 6 months ago this was a slide in a deck. Today it is real. For anyone in early stages: the gap between idea and first customer is smaller than you think if you just keep moving.</div>
+          <div class="pimg"><i class="ti ti-player-play" style="font-size:28px;color:#1D9E75"></i><span style="font-size:12px">Team celebration video · 1:24</span></div>
+          <div class="pact">
+            <button class="pa"><i class="ti ti-heart"></i> 89</button>
+            <button class="pa"><i class="ti ti-message"></i> 31 comments</button>
+            <button class="pa"><i class="ti ti-share"></i> Share</button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sc">
+          <div class="st"><i class="ti ti-calendar-event" style="color:#1D9E75"></i>Upcoming events</div>
+          <div class="ev"><div class="ed">Jun<br>18</div><div><div class="en">Founder Talk</div><div class="em">Dipoli · 18:00 · 47 attending</div></div></div>
+          <div class="ev"><div class="ed">Jun<br>25</div><div><div class="en">Founder Sprint kickoff</div><div class="em">Design Factory · 09:00</div></div></div>
+          <div class="ev"><div class="ed">Jul<br>3</div><div><div class="en">Investor office hours</div><div class="em">Online · Limited spots</div></div></div>
+        </div>
+
+        <div class="sc">
+          <div class="st"><i class="ti ti-users" style="color:#1D9E75"></i>Community</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div class="sbox"><div class="sn">214</div><div class="sl">Founders</div></div>
+            <div class="sbox"><div class="sn">38</div><div class="sl">Teams</div></div>
+            <div class="sbox"><div class="sn">127</div><div class="sl">Posts</div></div>
+            <div class="sbox"><div class="sn">6</div><div class="sl">Schools</div></div>
+          </div>
+        </div>
+
+        <div class="sc">
+          <div class="st"><i class="ti ti-robot" style="color:#1D9E75"></i>Founder Compass</div>
+          <div style="font-size:12px;color:#888;margin-bottom:10px">Got a founder question? Ask the AI.</div>
+          <button onclick="sw('compass',document.querySelectorAll('.nb')[1])" style="width:100%;background:#1D9E75;color:#fff;border:none;border-radius:8px;padding:8px;font-size:13px;cursor:pointer;font-weight:600">Ask now →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="compass" class="pane">
+    <div class="aw">
+      <div class="ah">
+        <div class="aico"><i class="ti ti-robot"></i></div>
+        <div class="atit">Founder Compass</div>
+        <div class="asub">Your 24/7 AI guide to the Aalto founder ecosystem</div>
+      </div>
+      <div class="chat" id="chatArea">
+        <div class="msg bot"><div class="ml">Founder Compass</div><div class="bub">Hi! I am Founder Compass — your guide to everything Aalto Founder School. I can help you find the right programme, answer questions about grants, explain what Founder Sprint involves, or point you to the right person. What is on your mind?</div></div>
+      </div>
+      <div class="typing" id="typing"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span style="margin-left:4px">Thinking...</span></div>
+      <div class="suggs" id="suggs">
+        <button class="sg" onclick="ask('What is the difference between Founder Sprint and Founder Minor?')">Sprint vs Minor?</button>
+        <button class="sg" onclick="ask('Are there any grants for early-stage startups in Finland?')">Grants in Finland?</button>
+        <button class="sg" onclick="ask('How do I find a co-founder at Aalto?')">Finding a co-founder?</button>
+        <button class="sg" onclick="ask('When is the next Founder Talk?')">Next Founder Talk?</button>
+      </div>
+      <div class="cir">
+        <input class="cin" id="cin" placeholder="Ask anything about the founder journey..." onkeydown="if(event.key==='Enter')send()">
+        <button class="csnd" onclick="send()"><i class="ti ti-send"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="events" class="pane">
+    <div style="max-width:580px">
+      <div style="font-size:15px;font-weight:600;color:#1a1a1a;margin-bottom:16px">Upcoming events</div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+          <div><div style="font-size:14px;font-weight:600;color:#1a1a1a">Founder Talk — Speaker TBA</div><div style="font-size:12px;color:#888;margin-top:3px">Wed 18 Jun · 18:00–20:00 · Dipoli, Otaniemi</div></div>
+          <span style="background:#e8f5e9;color:#0F6E56;font-size:11px;padding:3px 10px;border-radius:20px;white-space:nowrap;font-weight:500">47 attending</span>
+        </div>
+        <div style="font-size:13px;color:#555;line-height:1.65;margin-bottom:12px">A seasoned founder shares honest lessons on building, failing, and what it really takes to grow something that lasts.</div>
+        <button style="background:#1D9E75;color:#fff;border:none;border-radius:8px;padding:8px 18px;font-size:13px;cursor:pointer;font-weight:600">Register →</button>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+          <div><div style="font-size:14px;font-weight:600;color:#1a1a1a">Founder Sprint — Cohort 4 Kickoff</div><div style="font-size:12px;color:#888;margin-top:3px">Wed 25 Jun · 09:00–17:00 · Design Factory</div></div>
+          <span style="background:#fff9e6;color:#856A00;font-size:11px;padding:3px 10px;border-radius:20px;white-space:nowrap;font-weight:500">Application required</span>
+        </div>
+        <div style="font-size:13px;color:#555;line-height:1.65;margin-bottom:12px">The most intensive founder programme at Aalto begins. If you have been accepted to Cohort 4, this is your day one. Come ready to move fast.</div>
+        <button style="background:#fff;color:#888;border:1px solid #ccc;border-radius:8px;padding:8px 18px;font-size:13px;cursor:pointer">Learn more</button>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+          <div><div style="font-size:14px;font-weight:600;color:#1a1a1a">Investor Office Hours</div><div style="font-size:12px;color:#888;margin-top:3px">Thu 3 Jul · 13:00–16:00 · Online</div></div>
+          <span style="background:#e3f2fd;color:#185FA5;font-size:11px;padding:3px 10px;border-radius:20px;white-space:nowrap;font-weight:500">4 spots left</span>
+        </div>
+        <div style="font-size:13px;color:#555;line-height:1.65;margin-bottom:12px">30-minute 1-on-1 sessions with Nordic seed investors. Bring your deck and your honest questions.</div>
+        <button style="background:#1D9E75;color:#fff;border:none;border-radius:8px;padding:8px 18px;font-size:13px;cursor:pointer;font-weight:600">Book a slot →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const R={
+'What is the difference between Founder Sprint and Founder Minor?':'Founder Minor is an academic programme open to all Aalto students — structured coursework, credits, great if you want to explore entrepreneurship alongside your main studies.\n\nFounder Sprint is intensive and hands-on for students who already have an idea and are ready to move fast. More selective, more immersive — like a compressed startup accelerator inside the university.\n\nNot sure which fits? Tell me where you are in your journey.',
+'Are there any grants for early-stage startups in Finland?':'Yes! The most relevant ones for Aalto founders:\n\nBusiness Finland — Tempo grant (up to €50k) for early validation, Co-innovation funding for teams.\n\nAalto Ventures Program — internal funding for student startups.\n\nNordic seed investors and EBAN are also active in Helsinki.\n\nStart with Business Finland — accessible team, straightforward process. Want more detail on the Tempo grant?',
+'How do I find a co-founder at Aalto?':'A few of the most effective ways:\n\n1. Founder Sprint — many co-founder pairs form during the cohort.\n2. Founder Talks — stay after the event. The people who show up are exactly who you want to meet.\n3. Junction hackathon — great for finding technical co-founders.\n4. This community feed — post what you are building and what you are looking for.\n\nWhat kind of co-founder are you looking for?',
+'When is the next Founder Talk?':'The next Founder Talk is Wednesday 18 June at 18:00 at Dipoli, Otaniemi. 47 people have already signed up and it is free for all Aalto students.\n\nHead to the Events tab to register!'
+};
+function sw(id,btn){document.querySelectorAll('.pane').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active')}
+function ask(q){document.getElementById('suggs').style.display='none';add(q,'usr');document.getElementById('typing').classList.add('show');setTimeout(()=>{document.getElementById('typing').classList.remove('show');add(R[q]||'Great question! In the full version this would be answered using the Aalto Founder School knowledge base.','bot')},1200)}
+function send(){const el=document.getElementById('cin');const v=el.value.trim();if(!v)return;el.value='';document.getElementById('suggs').style.display='none';add(v,'usr');document.getElementById('typing').classList.add('show');setTimeout(()=>{document.getElementById('typing').classList.remove('show');add('Thanks! In the full version of Founder Compass this would be answered using the Aalto Founder School knowledge base. Try one of the suggested questions to see it in action.','bot')},1200)}
+function add(t,r){const a=document.getElementById('chatArea');const d=document.createElement('div');d.className='msg '+r;const l=document.createElement('div');l.className='ml';l.textContent=r==='bot'?'Founder Compass':'You';const b=document.createElement('div');b.className='bub';b.textContent=t;d.appendChild(l);d.appendChild(b);a.appendChild(d);a.scrollTop=a.scrollHeight}
+</script>
+</body>
+</html>
